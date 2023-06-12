@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSockets</title>
+    <style>
+        div#log {
+            width: 800px;
+            height: 300px;
+            margin: 0 auto;
+            border: 5px solid black;
+            border-radius: 7px;
+        }
+        div#sendCtrls {
+            width: 235px;
+            margin: 30px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id ="log"></div>
+
+    <script>
+        var log = document.getElementById('log');
+
+        function print(msg)
+        {
+            log.innerHTML += msg + "<br>";
+        }
+
+        print('start to test');
+
+        var sock = new WebSocket("ws://localhost:4501");
+
+        sock.onopen = function() {
+            print('connected to server');
+
+            let data = JSON.stringify({
+                sessionKey : "0a7bf3d0-f723-44a0-9e25-590bd517fdca"
+            });
+            sock.send(JSON.stringify({
+                messageID: 1,
+                data: data
+            }));
+
+
+            // Error Test
+            //sock.send("parse error test...");
+            // sock.send(JSON.stringify({
+            //     type: "name",
+            //     data: name
+            // }));
+        }
+
+        sock.onmessage = function(event) {
+            var data;
+            var msg = JSON.parse(event.data)
+            print("&nbsp;&nbsp;onmessage: " + msg.messageID + ": " + msg.data);
+
+
+            if (msg.messageID == 2) //LoginResult
+            {
+                data = JSON.parse(msg.data);
+                if (data.resultCode == 0)
+                {
+                    sock.send(JSON.stringify({
+                        messageID: 3,
+                        data: "{}"
+                    }));
+                }
+            } 
+            else if (msg.messageID == 4) //PlayGameReply
+            {
+                data = JSON.parse(msg.data);
+                if (data.resultCode == 0)
+                {
+                    print('&nbsp;&nbsp;Waiting...');
+                }
+            }
+        }
+
+        sock.onclose = function(event) {
+            print('disconnected from server');
+            print('finish');
+        }
+
+    </script>
+
+</body>
+
+</html>

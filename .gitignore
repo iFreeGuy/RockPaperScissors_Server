@@ -1,0 +1,25 @@
+## Ignore RockPaperScissors_Server temporary files, build results, and
+## files generated 
+##
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Mono auto generated files
+mono_crash.*
+
+# Build results
+dist/
+
+# node modules
+node_modules/
+
+# exclude files
+package-lock.json

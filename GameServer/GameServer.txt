@@ -1,0 +1,38 @@
+TODO
+----------------------------------------
+마지막에 LibShare로 공유 클래스들 옮기기...
+
+
+tsc --init
+
+생성된 tsconfig.json 수정
+----------------------------------------
+-target
+-rootDir
+-outDir
+-moduleResolution
+
+npm init -y
+
+생성된 package.json 수정
+----------------------------------------
+"scripts": {
+    "start": "node dist/MainServer.js",
+    "dev": "nodemon src/MainServer.ts",
+    "build": "tsc -p ."
+  },
+
+tsconfig.json에서 공유 라이브러리 설정 [최상위에서...]
+----------------------------------------
+,
+  "references": [
+    {
+      "path": "../LibShare"
+    }
+  ]
+
+npm i typescript
+npm i ts-node
+npm i ws
+npm install --save-dev @types/ws
+npm i -D typescript ts-node nodemon @types/node @types/express

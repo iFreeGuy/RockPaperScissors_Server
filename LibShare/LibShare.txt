@@ -1,0 +1,39 @@
+tsc --init
+
+생성된 tsconfig.json 수정
+----------------------------------------
+-target
+-rootDir
+-outDir
+-moduleResolution
+-declaration: true
+-declarationMap: true
+-composite: true
+-strict: true
+
+npm init -y
+
+생성된 package.json 수정
+----------------------------------------
+"scripts": {
+    "build": "tsc -p ."
+  },
+
+왠지는 모르겠다. 한번 더 해야 에러가 사라진다.
+npm init
+
+npm i express
+npm i mongodb
+npm i redis
+// https://www.uuidgenerator.net/dev-corner/typescript
+npm i uuid
+npm i --save-dev @types/uuid
+npm i --save-dev @types/redis
+npm i --save-dev @types/connect-redis
+npm i -D typescript ts-node nodemon @types/node @types/express
+
+
+
+유용한 명령어
+----------------------------------------
+tsc --build --clean

@@ -1,0 +1,78 @@
+// 세팅 영상 주소
+https://www.youtube.com/watch?v=2LnqQTj27cE
+
+npm i -g typescript
+
+tsc --version
+
+tsc --init
+
+생성된 tsconfig.json 수정
+----------------------------------------
+-target
+-rootDir
+-outDir
+-moduleResolution
+
+npm init -y
+
+생성된 package.json 수정
+----------------------------------------
+"scripts": {
+    "start": "node dist/MainServer.js",
+    "dev": "nodemon src/MainServer.ts",
+    "build": "tsc -p ."
+  },
+
+
+npm i express
+npm i mongodb
+npm i redis
+// https://www.uuidgenerator.net/dev-corner/typescript
+npm i uuid
+npm i --save-dev @types/uuid
+npm i --save-dev @types/redis
+npm i --save-dev @types/connect-redis
+npm i -D typescript ts-node nodemon @types/node @types/express
+
+npm run dev
+npm run build
+npm run start
+
+
+tsconfig.json에서 공유 라이브러리 설정 [최상위에서...]
+----------------------------------------
+,
+  "references": [
+    {
+      "path": "../LibShare"
+    }
+  ]
+
+
+Script: create storage in MongoDB 
+----------------------------------------
+use MGS_DB
+db.createCollection("Users")
+db.Users.insertOne({_id:"user1", password:"password1"})
+db.Users.insertOne({_id:"user2", password:"password2"})
+
+
+Site
+----------------------------------------
+TypeScript PlayGround
+https://www.typescriptlang.org/play?ts=5.0.4&ssl=5&ssc=1&pln=8&pc=1#code/G4QwTgBALgpgzlCBeCA7GB3CBZEAHAHgTAEtUBzAGgmLPID4AKASgG4AoWBAOjhikYByANYwAnoOqDQAGwCuMQW3YBjAPao4amTG4y15Rlyjdy-IaInNl7MrDAAzECpgQAEiDgALACogARjoEPvQQAN7sEFEQANqWAFw0UKQUALqJPhwAvuzsoJDGAEwQiR7efoEwRMl0oShhWRxFMSLihYKpyBDSIPIw7RyqGlo6egZG8FCFLZbtqcrqmtq6+obNrWIAomBgHTbsQA
+
+How to share code between TypeScript projects?
+https://stackoverflow.com/questions/47729344/how-to-share-code-between-typescript-projects
+
+
+
+
+
+
+
+
+
+
+
